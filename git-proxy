@@ -1,0 +1,3 @@
+#!/bin/sh
+PROXY=child-prc.intel.com
+exec socat STDIO SOCKS4:$PROXY:$1:$2

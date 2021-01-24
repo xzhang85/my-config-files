@@ -1,6 +1,7 @@
 [core]
 	autocrlf = false
 	editor = vim
+        gitProxy = git-proxy
 [user]
 	name = Xin Zhang
 	email = zhangxin.xa@gmail.com

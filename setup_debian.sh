@@ -2,7 +2,7 @@
 
 echo "=== Install necessary packages ==="
 sudo -E apt-get update
-sudo -E apt-get install -y aptitude openssh-server git tmux vim vim-nox zsh htop curl rsync clang-format universal-ctags cloc cscope tree build-essential autoconf gdb cmake cmake-curses-gui pkg-config wget trash-cli python3-dev
+sudo -E apt-get install -y aptitude openssh-server git tmux vim vim-nox zsh htop curl rsync clang-format cloc socat tree build-essential autoconf gdb cmake cmake-curses-gui pkg-config wget trash-cli python3-dev
 
 echo "=== Setup GDB ==="
 wget https://raw.githubusercontent.com/cyrus-and/gdb-dashboard/master/.gdbinit -O ~/.gdbinit
@@ -32,6 +32,7 @@ cp $(dirname "$0")/dir_colors ~/.dir_colors
 mkdir ~/bin
 mkdir ~/.vim
 cp ./dgdb ~/bin
+cp ./git-proxy ~/bin
 
 echo "=== Setup vim-plug and vim plugins ==="
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
