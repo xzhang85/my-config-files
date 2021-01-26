@@ -2,7 +2,7 @@
 
 echo "=== Install necessary packages ==="
 sudo -E apt-get update
-sudo -E apt-get install -y aptitude openssh-server git tmux vim vim-nox zsh htop curl rsync clang-format cloc socat tree bat ripgrep build-essential autoconf gdb cmake cmake-curses-gui pkg-config wget trash-cli python3-dev
+sudo -E apt-get install -y aptitude openssh-server git tmux neovim vim vim-nox zsh htop curl rsync clang-format cloc socat tree bat ripgrep build-essential autoconf gdb cmake cmake-curses-gui pkg-config wget trash-cli python3-dev
 
 echo "=== Setup GDB ==="
 wget https://raw.githubusercontent.com/cyrus-and/gdb-dashboard/master/.gdbinit -O ~/.gdbinit
@@ -24,6 +24,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 
 echo "=== Copy config files ==="
 cp $(dirname "$0")/vimrc ~/.vimrc
+cp $(dirname "$0")/init.vim ~/.config/nvim
 cp $(dirname "$0")/zshrc ~/.zshrc
 cp $(dirname "$0")/p10k.zsh ~/.p10k.zsh
 cp $(dirname "$0")/tmux.conf ~/.tmux.conf
@@ -37,7 +38,7 @@ cp ./git-proxy ~/bin
 echo "=== Setup vim-plug and vim plugins ==="
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim +PlugInstall +qall
-sed -i 's/colorscheme ron/colorscheme solarized/' ~/.vimrc
+sed -i 's/colorscheme default/colorscheme gruvbox/' ~/.vimrc
 
 echo "remember to relogin."
 echo "Bye Bye."

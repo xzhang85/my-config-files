@@ -124,12 +124,13 @@ alias grep='rg --column --no-heading --smart-case --color=always'
 alias rg='rg --column --no-heading --smart-case --color=always'
 alias bat='batcat'
 alias cat='batcat --paging=never'
-alias v='vim'
-alias vi='vim'
-alias vd='vimdiff'
+alias v='nvim'
+alias vi='nvim'
+alias vim='nvim'
+alias vd='nvim -d'
 set -o vi
-export VISUAL=vim
-export EDITOR=vim
+export VISUAL=nvim
+export EDITOR=nvim
 
 [[ $TMUX == "" ]] && export TERM="xterm-256color"
 
