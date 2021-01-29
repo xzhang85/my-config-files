@@ -3,7 +3,7 @@
 echo "=== Install necessary packages ==="
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew update
-brew install tmux vim htop rsync clang-format cloc tree cmake wget trash-cli
+brew install tmux vim htop rsync clang-format cloc tree bat ripgrep cmake wget trash-cli
 
 echo "=== Setup oh-my-zsh ==="
 sh -c "RUNZSH=no $(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"

@@ -119,7 +119,11 @@ fi
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls'
-alias grep='grep -iIn --exclude=tags --exclude-dir={.git,build} --color=auto'
+#alias grep='grep -iIn --exclude=tags --exclude-dir={.git,.idea,.vscode} --color=auto'
+alias grep='rg --column --no-heading --smart-case --color=always'
+alias rg='rg --column --no-heading --smart-case --color=always'
+alias bat='batcat'
+alias cat='batcat --paging=never'
 alias v='vim'
 alias vi='vim'
 alias vd='vimdiff'
@@ -150,7 +154,7 @@ alias cp="rsync -poghbr --backup-dir=/tmp/rsync -e /dev/null --info=progress2 "
 export CMAKE_EXPORT_COMPILE_COMMANDS=ON
 export GIT_PROXY_COMMAND=~/bin/git-proxy
 
-if [[ ! "$PATH" == */home/$DEFAULT_USER/.local/bin* ]]; then
+if [[ ! "$PATH" == *$HOME/.local/bin* ]]; then
     export PATH=~/bin:~/.local/bin:$PATH
 fi
 
