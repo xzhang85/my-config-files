@@ -137,7 +137,8 @@ export EDITOR=nvim
 if [[ `uname` == "Darwin" ]]; then
     export LSCOLORS=exfxcxdxbxegedabagacad
 else
-    eval `dircolors ~/.dir_colors`
+    # this is for solarized color theme only
+    # eval `dircolors ~/.dir_colors`
 fi
 
 # alias cp -- Show progress while file is copying and make backup
