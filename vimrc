@@ -133,6 +133,7 @@ nnoremap <Leader>w :Windows<CR>
 nnoremap <Leader>7 :BCommits<CR>
 nnoremap <Leader>8 :Commits<CR>
 "ripgrep string
+nnoremap <Leader>s :call RipgrepFzf(expand("<cword>"), 0)<CR>
 nnoremap <Leader>ss :call RipgrepFzf(expand("<cword>"), 0)<CR>
 "ripgrep word
 nnoremap <Leader>sw :call RipgrepFzf('-w '.expand("<cword>"), 0)<CR>
@@ -145,12 +146,16 @@ nnoremap <Leader>F :Files<Space>
 nnoremap <Leader>f :call FilesFromDirname(0)<CR>
 
 function! FilesFromDirname(fullscreen)
+    let dir = ''
     let spec = {}
-    let query = fnamemodify(expand('%'), ':h')
-    if query[0] !=# '.' && query[0] !=# '/'
-        let spec.options = ['-q', query]
+    let abspath = fnamemodify(expand('%'), ':p:h')
+    let matched = matchstrpos(abspath, getcwd())
+    if matched[0] !=# ""
+        let spec.options = ['-q', abspath[matched[2]+1:]]
+    else
+        let dir = abspath
     endif
-    call fzf#vim#files('', fzf#vim#with_preview(spec), a:fullscreen)
+    call fzf#vim#files(dir, fzf#vim#with_preview(spec), a:fullscreen)
 endfunction
 
 function! RipgrepFzf(string, fullscreen)
