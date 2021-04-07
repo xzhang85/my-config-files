@@ -71,7 +71,9 @@ set tags=./.tags;,.tags
 
 "set very magic for regular expression
 nnoremap / /\v
+vnoremap / y/<C-r>"<CR>
 nnoremap ? ?\v
+vnoremap ? y?<C-r>"<CR>
 cnoremap s/ s/\v
 
 let mapleader = " "
