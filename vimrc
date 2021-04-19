@@ -93,6 +93,9 @@ set tabstop=8 expandtab shiftwidth=4 softtabstop=4
 "autocmd FileType cpp setlocal tabstop=8 noexpandtab shiftwidth=8 softtabstop=8
 autocmd FileType python setlocal foldmethod=indent foldignore=
 
+"terminal
+:tnoremap <Esc> <C-\><C-n>
+
 "plugin setting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
