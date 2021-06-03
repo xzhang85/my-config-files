@@ -155,6 +155,9 @@ alias cp="rsync -poghbr --backup-dir=/tmp/rsync -e /dev/null --info=progress2 "
 
 export CMAKE_EXPORT_COMPILE_COMMANDS=ON
 export GIT_PROXY_COMMAND=~/bin/git-proxy
+if [[ `lsb_release -i` =~ ".*Debian" ]]; then
+    export DEBUGINFOD_URLS="https://debuginfod.debian.net"
+fi
 
 if [[ ! "$PATH" == *$HOME/.local/bin* ]]; then
     export PATH=~/bin:~/.local/bin:$PATH
