@@ -1,10 +1,10 @@
 #!/bin/bash
 
 tmux split-window -h
-RIGHTDASHTTY=$(tmux display -pt 1 '#{pane_tty}')
+RIGHTDASHTTY=$(tmux display -p '#{pane_tty}')
 
 tmux split-window -v -t 0
-BELOWDASHTTY=$(tmux display -pt 2 '#{pane_tty}')
+BELOWDASHTTY=$(tmux display -p '#{pane_tty}')
 
 tmux select-pane -t 0
 gdb \
