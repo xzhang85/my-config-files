@@ -111,19 +111,14 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias rm='trash-put'
-if [[ `uname` == "Darwin" ]]; then
-    alias ls='ls -G'
-else
-    alias ls='ls --color -F'
-fi
-alias ll='ls -l'
-alias la='ls -A'
-alias l='ls'
+alias ls='exa'
+alias l='exa'
+alias ll='exa -l'
+alias la='exa -a'
 #alias grep='grep -iIn --exclude=tags --exclude-dir={.git,.idea,.vscode} --color=auto'
 alias grep='rg --column --no-heading --smart-case --color=always'
 alias rg='rg --column --no-heading --smart-case --color=always'
-alias bat='batcat'
-alias cat='batcat --paging=never'
+alias cat='bat --paging=never'
 alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
@@ -134,9 +129,7 @@ export EDITOR=nvim
 
 [[ $TMUX == "" ]] && export TERM="xterm-256color"
 
-if [[ `uname` == "Darwin" ]]; then
-    export LSCOLORS=exfxcxdxbxegedabagacad
-else
+if [[ `uname` == "Linux" ]]; then
     # this is for solarized color theme only
     # eval `dircolors ~/.dir_colors`
 fi
@@ -155,13 +148,14 @@ alias cp="rsync -poghbr --backup-dir=/tmp/rsync -e /dev/null --info=progress2 "
 
 export CMAKE_EXPORT_COMPILE_COMMANDS=ON
 export GIT_PROXY_COMMAND=~/bin/git-proxy
-if [[ `lsb_release -i` =~ ".*Debian" ]]; then
+if [[ `uname` == "Linux" && `lsb_release -i` =~ ".*Debian" ]]; then
     export DEBUGINFOD_URLS="https://debuginfod.debian.net"
 fi
 
-if [[ ! "$PATH" == *$HOME/.local/bin* ]]; then
+if [[ ! "$PATH" =~ ".*$HOME/.local/bin.*" ]]; then
     export PATH=~/bin:~/.local/bin:$PATH
 fi
+[[ ! -f ~/.cargo/env ]] || source ~/.cargo/env
 
 dexec() {
     docker exec -it $1 bash -c "stty cols $COLUMNS rows $LINES && bash";

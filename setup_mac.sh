@@ -3,7 +3,7 @@
 echo "=== Install necessary packages ==="
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew update
-brew install tmux neovim vim htop rsync clang-format cloc tree bat ripgrep cmake wget trash-cli
+brew install tmux neovim vim htop rsync clang-format cloc tree cmake wget trash-cli
 
 echo "=== Setup oh-my-zsh ==="
 sh -c "RUNZSH=no $(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
@@ -23,6 +23,12 @@ echo "=== Setup vim-plug and vim plugins ==="
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim +PlugInstall +qall
 sed -i 's/colorscheme default/colorscheme gruvbox/' ~/.vimrc
+
+echo "=== Setup rust and tools from cargo ==="
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > sh.rustup.rs
+sh ./sh.rustup.rs -y --no-modify-path && rm ./sh.rustup.rs
+source ~/.cargo/env
+cargo install ripgrep bat exa
 
 echo "remember to relogin."
 echo "Bye Bye."
