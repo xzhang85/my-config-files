@@ -153,10 +153,13 @@ nnoremap <Leader>f :call FilesFromDirname(0)<CR>
 function! FilesFromDirname(fullscreen)
     let dir = ''
     let spec = {}
+    let cwd = getcwd()
     let abspath = fnamemodify(expand('%'), ':p:h')
-    let matched = matchstrpos(abspath, getcwd())
-    if matched[0] !=# ""
-        let spec.options = ['-q', abspath[matched[2]+1:]]
+    let matched = matchstrpos(abspath, cwd)
+    if abspath ==# cwd
+        let dir = ''
+    elseif matched[0] !=# ""
+        let spec.options = ['-q', abspath[matched[2]+1:].'/']
     else
         let dir = abspath
     endif
