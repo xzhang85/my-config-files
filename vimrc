@@ -42,6 +42,7 @@ set ignorecase
 set smartcase
 set incsearch
 set hlsearch
+set clipboard+=unnamedplus
 
 set foldmethod=syntax
 set foldcolumn=4
