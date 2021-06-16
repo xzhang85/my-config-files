@@ -19,7 +19,7 @@ Plug 'morhetz/gruvbox'
 " show all functions in current file
 Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 " completer
-Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 ./install.py --clangd-completer' }
+Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 ./install.py --clangd-completer --rust-completer' }
 " snippet
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
